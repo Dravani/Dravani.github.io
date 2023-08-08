@@ -6,6 +6,7 @@
     <meta name = "viewport" content="width=device-width, intial-scale = 1.0">
     <title>Personal Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/0ccbfe1450.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="header">
@@ -13,12 +14,11 @@
             <nav>
                 <h2>Portfolio</h2>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Skills</a></li>
-                    <li><a href="#">Experience</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience_id">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-text">
@@ -51,7 +51,92 @@
             </div>
         </div>
     </div>
+<!---------------------Experience Section----------------------->
+    <div class="experience_container" id="experience_id">
+        <h2 class="subtitle">
+            Experience
+        </h2>
+        <div class="experience_body_container">
+            <div class="experience_card_container">
+                <div class="gd_text_container">
+                    <h3 class="gd_text">
+                        <a href="https://www.gd.com/" target="_blank" rel="noopener noreferrer"> <mark class="mark3"> General Dynamics MS </mark> </a> Software Co-Op | May 2022 - August 2023
+                    </h3>
+                </div>
+                <div class="experience_card_content">
+                    <p>• Worked 25+ hours a week during the summer in office and 15+ hours a week during the school year remotely while in addition to managing a full academic workload. 
 
+                    </p>
+                    <p>• Developed software using C++ and agile methodologies. </p>
+                    <p>• Collaborated with the Scrum Master and development team to assure that deadlines were met and clients 
+                        were satisfied.</p>
+                    <p>• Supported testing operating systems-level software and worked on bug fix reports.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--------------------projects------------------------>
+<div id="projects">
+    <div class="container">
+        <div class="subtitle-projects">Projects</div>
+        <div class="project-list">
+            <div>
+                <i class="fa-solid fa-computer"></i>
+                <h2>Personal Portfolio</h2>
+                <button class="card_button"><a href="https://github.com/Dravani/Personal-Portfolio" target="_blank" rel="noopener noreferrer">Github</a></button>
+            </div>
+            <div>
+                <i class="fa-solid fa-bowl-food"></i>
+                <h2>Cook Master</h2>
+                <button class="card_button"><a href="https://github.com/Dravani/Cook-Master" target="_blank" rel="noopener noreferrer">Github</a></button>
 
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------------contact----------------------->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class = "subtitle">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>devan.ravani@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>415-743-0313</p>
+                <div class="social-icons">
+                    <a href="http://facebook/DevanRavani123"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/devan-ravani/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Dravani"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form name = "submit-to-google-sheet">
+                    <input type="text" name = "Name" placeholder = "Your Name" required>
+                    <input type="email" name = "Email" placeholder = "Your email" required>
+                    <textarea name = "Message" rows = "6" placeholder="Your Message"></textarea>
+                    <button type = "submit">Submit</button>
+                </form>
+                <span id = "msg"></span>
+            </div>
+        </div>
+    </div>
+</div>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbykRbmVIJA_FLYQKuTrDwUAUJ3RTazCoN7fMqtqhNV4LXirikSBI-kgM-xHvSm3D9ftOw/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML= ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 </body>
 </html>
